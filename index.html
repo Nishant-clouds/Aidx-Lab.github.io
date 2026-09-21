@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIDX Lab — AI for Decision Excellence | Australian Catholic University</title>
+<meta name="description" content="The AI for Decision Excellence (AIDX) Lab at the Peter Faber Business School, Australian Catholic University: interdisciplinary research on trustworthy, human-centred and explainable AI that improves important decisions.">
+<meta name="theme-color" content="#0A1224">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<meta property="og:title" content="AIDX Lab — AI for Decision Excellence">
+<meta property="og:description" content="Interdisciplinary research on the design, evaluation and responsible use of AI to improve important decisions.">
+<meta property="og:image" content="images/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#about" class="skip">Skip to content</a>
+
+<!-- INTRO: the logo mark draws itself -->
+<div class="intro" id="intro" aria-hidden="true">
+  <svg class="intro-mark" viewBox="0 0 100 100">
+    <path class="im-d" d="M50 8 L92 50 L50 92 L8 50 Z"/>
+    <circle class="im-c" cx="50" cy="50" r="8"/>
+  </svg>
+  <span class="intro-word">AIDX</span>
+</div>
+
+<div class="prog" id="prog" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav" aria-label="Main">
+  <a href="#top" class="brand" aria-label="AIDX Lab home">
+    <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8 L92 50 L50 92 L8 50 Z"/><circle cx="50" cy="50" r="9"/></svg>
+    <span class="brand-t"><b>AIDX</b><small>Lab</small></span>
+  </a>
+  <div class="links" id="links">
+    <a href="#about">About</a><a href="#research">Research</a><a href="#people">People</a>
+    <a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#news">News</a>
+    <a href="#media">Media</a><a href="#contact">Contact</a>
+  </div>
+  <div class="nav-r">
+    <button id="themeBtn" class="icon-btn" aria-label="Switch to light theme"><i class="fa-solid fa-sun" aria-hidden="true"></i></button>
+    <button id="menuBtn" class="icon-btn menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="links"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <canvas id="lattice" class="lattice" aria-hidden="true"></canvas>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="mono eyebrow"><span class="pulse"></span>Peter Faber Business School · Australian Catholic University</p>
+      <h1 class="display">
+        <span class="ln"><span>Better decisions,</span></span>
+        <span class="ln"><span><em>explained.</em></span></span>
+      </h1>
+      <p class="lede">The AI for Decision Excellence Lab designs, evaluates and governs artificial intelligence that improves important decisions made by people, organisations and communities.</p>
+      <div class="cta">
+        <a href="#research" class="btn btn-gold">Explore our research <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="#publications" class="btn btn-line">Publications</a>
+      </div>
+      <ul class="commit mono" aria-label="Commitments">
+        <li>Safety</li><li>Fairness</li><li>Privacy</li><li>Accountability</li>
+      </ul>
+    </div>
+
+    <!-- SIGNATURE: explainable decision engine -->
+    <section class="engine" id="engine" aria-label="Illustrative decision support demonstration">
+      <div class="eng-head">
+        <span class="mono eng-title"><svg class="mark sm" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8 L92 50 L50 92 L8 50 Z"/><circle cx="50" cy="50" r="9"/></svg>Decision engine</span>
+        <span class="mono eng-badge">Illustrative demo</span>
+      </div>
+
+      <div class="eng-tabs" role="tablist" aria-label="Scenarios">
+        <button role="tab" class="eng-tab active" data-s="0" aria-selected="true">Learning</button>
+        <button role="tab" class="eng-tab" data-s="1" aria-selected="false">Deployment</button>
+        <button role="tab" class="eng-tab" data-s="2" aria-selected="false">Investment</button>
+      </div>
+
+      <p class="eng-q" id="engQ"></p>
+
+      <ol class="eng-steps mono" id="engSteps">
+        <li>Evidence</li><li>Weigh</li><li>Explain</li><li>Human review</li>
+      </ol>
+
+      <ul class="eng-opts" id="engOpts" aria-live="polite"></ul>
+
+      <div class="eng-legend mono" aria-hidden="true">
+        <span><i class="c-impact"></i>Impact</span><span><i class="c-fair"></i>Fairness</span>
+        <span><i class="c-risk"></i>Low risk</span><span><i class="c-cost"></i>Low cost</span>
+      </div>
+
+      <details class="eng-weights" id="engWeights">
+        <summary class="mono">Adjust criteria weights</summary>
+        <div class="w-grid" id="wGrid"></div>
+      </details>
+
+      <div class="eng-why" id="engWhy" aria-live="polite"></div>
+
+      <div class="eng-act">
+        <button class="eng-btn approve" id="engApprove" disabled><i class="fa-solid fa-check" aria-hidden="true"></i> Approve</button>
+        <button class="eng-btn override" id="engOverride" disabled><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Override</button>
+        <button class="eng-btn rerun" id="engRun" aria-label="Run again"><i class="fa-solid fa-play" aria-hidden="true"></i></button>
+      </div>
+      <p class="eng-log mono" id="engLog" aria-live="polite"></p>
+    </section>
+  </div>
+  <a href="#about" class="scroll-cue mono" aria-label="Scroll to About"><span>Scroll</span><i></i></a>
+</header>
+
+<!-- THEMES STRIP -->
+<div class="strip" aria-hidden="true"><div class="strip-t">
+  <span>Decision Intelligence</span><b>◆</b><span>Human-AI Collaboration</span><b>◆</b><span>Trustworthy AI</span><b>◆</b><span>Governance</span><b>◆</b><span>Agentic AI</span><b>◆</b><span>AI for Learning</span><b>◆</b><span>Organisations &amp; Society</span><b>◆</b>
+  <span>Decision Intelligence</span><b>◆</b><span>Human-AI Collaboration</span><b>◆</b><span>Trustworthy AI</span><b>◆</b><span>Governance</span><b>◆</b><span>Agentic AI</span><b>◆</b><span>AI for Learning</span><b>◆</b><span>Organisations &amp; Society</span><b>◆</b>
+</div></div>
+
+<main>
+<!-- 01 ABOUT -->
+<section class="sec about" id="about">
+  <div class="about-l">
+    <div class="sticky">
+      <p class="mono idx">01 — About</p>
+      <h2 class="h2">About the<br><em>lab</em></h2>
+      <p class="mono loc">Peter Faber Business School<br>Faculty of Law and Business<br>North Sydney</p>
+    </div>
+  </div>
+  <div class="about-r">
+    <p class="statement rv">We bring together expertise from AI, business, law, ethics, education and information systems to develop trustworthy, human-centred and explainable AI solutions.</p>
+    <p class="body rv">The AI for Decision Excellence (AIDX) Lab at the Peter Faber Business School, Faculty of Law and Business, Australian Catholic University (ACU) is an interdisciplinary research lab focused on the design, evaluation, and responsible use of artificial intelligence to improve important decisions made by people, organisations, and communities.</p>
+    <p class="body rv">Our research advances decision intelligence, human-AI collaboration, agentic AI, responsible governance, and AI-enabled learning while ensuring that safety, fairness, privacy, and accountability remain central to innovation. Through research, education, and industry partnerships, we translate cutting-edge AI into practical solutions that create measurable social, organisational, and educational impact.</p>
+
+    <div class="disc rv">
+      <p class="mono sub">Six disciplines</p>
+      <ul class="disc-list">
+        <li><span class="mono">01</span>Artificial intelligence</li>
+        <li><span class="mono">02</span>Business</li>
+        <li><span class="mono">03</span>Law</li>
+        <li><span class="mono">04</span>Ethics</li>
+        <li><span class="mono">05</span>Education</li>
+        <li><span class="mono">06</span>Information systems</li>
+      </ul>
+    </div>
+
+    <div class="pillars rv">
+      <p class="mono sub">Central to every project</p>
+      <div class="pillar-grid">
+        <div class="pillar"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><h3>Safety</h3></div>
+        <div class="pillar"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><h3>Fairness</h3></div>
+        <div class="pillar"><i class="fa-solid fa-lock" aria-hidden="true"></i><h3>Privacy</h3></div>
+        <div class="pillar"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><h3>Accountability</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 RESEARCH -->
+<section class="sec" id="research">
+  <div class="head rv">
+    <p class="mono idx">02 — Research</p>
+    <h2 class="h2">Five research <em>themes</em></h2>
+  </div>
+  <div class="themes">
+    <button class="theme t-lg rv" data-t="0" aria-haspopup="dialog">
+      <svg class="t-art" viewBox="0 0 360 220" aria-hidden="true">
+        <path class="flow" d="M68 60 C130 60 150 110 188 110"/>
+        <path class="flow" d="M68 160 C130 160 150 110 188 110"/>
+        <path class="flow gold" d="M252 110 H300"/>
+        <circle class="n-sky" cx="50" cy="60" r="16"/><circle class="dot-sky" cx="50" cy="60" r="4"/>
+        <rect class="n-sky" x="34" y="144" width="32" height="32" rx="7"/><rect class="dot-sky" x="46" y="156" width="8" height="8" rx="2"/>
+        <path class="n-gold" d="M220 78 L252 110 L220 142 L188 110 Z"/><circle class="dot-fg" cx="220" cy="110" r="5"/>
+        <circle class="n-gold" cx="318" cy="110" r="15"/><path class="chk" d="M311 110l5 5 9-10"/>
+        <text x="50" y="100">HUMAN</text><text x="50" y="204">AI</text><text x="220" y="170">DECISION</text><text x="318" y="148">OUTCOME</text>
+      </svg>
+      <span class="mono t-n">01</span>
+      <svg class="t-ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="12" cy="11" r="5"/><rect x="31" y="6" width="10" height="10" rx="2"/><path d="M14.5 15.5 24 27M34.5 16.5 24 27"/><path d="M24 25l7 7-7 7-7-7z"/></svg>
+      <h3>Decision Intelligence &amp; Human-AI Collaboration</h3>
+      <p>Advancing AI systems that support better human decision-making.</p>
+      <span class="mono more">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+    </button>
+    <button class="theme rv" data-t="1" aria-haspopup="dialog">
+      <span class="mono t-n">02</span>
+      <svg class="t-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5l15 6v11c0 10-6.5 17-15 21C15.5 39 9 32 9 22V11z"/><path d="M17 24l5 5 9-10"/></svg>
+      <h3>Trustworthy AI &amp; Governance</h3>
+      <p>Building responsible, explainable, fair, and accountable AI.</p>
+      <span class="mono more">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+    </button>
+    <button class="theme rv" data-t="2" aria-haspopup="dialog">
+      <span class="mono t-n">03</span>
+      <svg class="t-ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="9" r="4.5"/><circle cx="9" cy="37" r="4.5"/><circle cx="39" cy="37" r="4.5"/><path d="M21.5 13 11.5 33M26.5 13l10 20M13.5 37h21"/><path d="M24 22a5 5 0 1 1-4 2"/></svg>
+      <h3>Agentic AI &amp; Adaptive Systems</h3>
+      <p>Developing intelligent agents that can reason, adapt, and collaborate safely.</p>
+      <span class="mono more">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+    </button>
+    <button class="theme rv" data-t="3" aria-haspopup="dialog">
+      <span class="mono t-n">04</span>
+      <svg class="t-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 11c6-2 13-2 19 2 6-4 13-4 19-2v25c-6-2-13-2-19 2-6-4-13-4-19-2z"/><path d="M24 13v25"/><path d="M29 28l4-5 3 3 4-6"/></svg>
+      <h3>AI for Learning &amp; Capability Development</h3>
+      <p>Enhancing education, assessment, and personalised learning through AI.</p>
+      <span class="mono more">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+    </button>
+    <button class="theme rv" data-t="4" aria-haspopup="dialog">
+      <span class="mono t-n">05</span>
+      <svg class="t-ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40V18l10-6v28M18 40V7l12 6v27M30 40V21l10 4v15M4 40h40"/><path d="M22 18h4M22 24h4M22 30h4"/></svg>
+      <h3>AI for Organisations &amp; Society</h3>
+      <p>Applying AI to create measurable impact across business, education, government, and communities.</p>
+      <span class="mono more">Read more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+    </button>
+  </div>
+</section>
+
+<!-- 03 PEOPLE -->
+<section class="sec" id="people">
+  <div class="head rv">
+    <p class="mono idx">03 — People</p>
+    <h2 class="h2">Our <em>team</em></h2>
+  </div>
+
+  <p class="mono grp rv">Lab director</p>
+  <article class="person lead rv">
+    <div class="avatar" aria-hidden="true"><img src="images/Walayat.jpeg" alt=""></div>
+    <div class="p-body">
+      <h3>Associate Professor Walayat Hussain</h3>
+      <p class="mono role">Director, AIDX Lab · Head of Discipline, Information Technology and Systems</p>
+      <p class="aff">Peter Faber Business School, Australian Catholic University</p>
+      <p class="bio">More than two decades of experience across academia and industry, with over 90 publications including ERA A* and A ranked venues. Associate Editor of <i>IET Communications</i>, <i>International Journal of Web Information Systems</i> and <i>Forecasting</i>, and a Fellow of the European Alliance for Innovation.</p>
+      <div class="p-links mono">
+        <a href="https://www.acu.edu.au/research-and-enterprise/our-people/walayat-hussain" target="_blank" rel="noopener">ACU profile</a>
+        <a href="https://scholar.google.com/citations?hl=en&amp;user=HaA3MowAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+         <a href="https://www.linkedin.com/in/walayat-hussain-3104317a/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </article>
+
+  <p class="mono grp rv">PhD candidates</p>
+  <div class="people-grid">
+    <article class="person rv">
+      <div class="avatar" aria-hidden="true"><img src="images/nazmul.jpeg" alt=""></div>
+      <div class="p-body">
+        <h3>Md Nazmul Hossain</h3>
+        <p class="mono role">PhD Candidate</p>
+        <p class="aff">Peter Faber Business School, Australian Catholic University</p>
+        <p class="bio">Recent work on agentic frameworks for early detection and adaptive nudging in higher education, and on what self-improving LLM systems learn in production.</p>
+         <div class="p-links mono">
+           <a href="https://scholar.google.com/citations?user=WHNwDPUAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+           <a href="https://www.linkedin.com/in/md-nazmul-hossain-bd/" target="_blank" rel="noopener">LinkedIn</a>
+         </div>
+      </div>
+    </article>
+    <article class="person slot rv">
+      <div class="avatar" aria-hidden="true"><i class="fa-solid fa-plus"></i></div>
+      <div class="p-body">
+        <h3>Team member</h3>
+        <p class="mono role">Academic staff · PhD · Research assistant · Intern</p>
+        <p class="bio">Name, positions, affiliations, projects, publications, awards and contact details.</p>
+      </div>
+    </article>
+  </div>
+  <p class="ph mono rv">Placeholder — further team members will be added as details are provided.</p>
+</section>
+
+<!-- 04 PUBLICATIONS -->
+<section class="sec" id="publications">
+  <div class="head rv">
+    <p class="mono idx">04 — Publications</p>
+    <h2 class="h2">Recent <em>publications</em></h2>
+  </div>
+
+  <div class="pub-ctl rv">
+    <div class="chips" id="yearChips" role="group" aria-label="Filter by year">
+      <button class="chip active" data-y="all" aria-pressed="true">All years</button>
+      <button class="chip" data-y="2026" aria-pressed="false">2026</button>
+      <button class="chip" data-y="2025" aria-pressed="false">2025</button>
+    </div>
+    <div class="chips" id="typeChips" role="group" aria-label="Filter by type">
+      <button class="chip active" data-k="all" aria-pressed="true">All types</button>
+      <button class="chip" data-k="journal" aria-pressed="false">Journal</button>
+      <button class="chip" data-k="book" aria-pressed="false">Book &amp; chapter</button>
+      <button class="chip" data-k="conference" aria-pressed="false">Conference</button>
+      <button class="chip" data-k="preprint" aria-pressed="false">Preprint</button>
+    </div>
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <label for="q" class="sr">Search publications</label>
+      <input id="q" type="search" placeholder="Search title, author or venue" autocomplete="off">
+    </div>
+  </div>
+  <p class="mono count" id="count" role="status" aria-live="polite"></p>
+
+  <ol class="pubs" id="pubs">
+    <li class="pub" data-y="2026" data-k="journal">
+      <div class="pub-meta mono"><span class="type">Journal</span><span>2026</span></div>
+      <h3>From regional roots to global reach: A 30-year bibliometric analysis of the Journal of Management &amp; Organization</h3>
+      <p class="au">Hussain, W., Merigó, J. M., Baraheem, H., &amp; Ratten, V.</p>
+      <p class="venue"><i>Journal of Management &amp; Organization</i>, 32(1), 215–266.</p>
+      <div class="pub-links mono"><a href="https://doi.org/10.1017/jmo.2025.10066" target="_blank" rel="noopener">DOI</a><button class="cite" type="button">Copy citation</button></div>
+    </li>
+    <li class="pub" data-y="2026" data-k="book">
+      <div class="pub-meta mono"><span class="type">Edited book</span><span>2026</span></div>
+      <h3>AI-Driven Mathematics Education</h3>
+      <p class="au">Sahni, M., León-Castro, E., &amp; Hussain, W. (Eds.)</p>
+      <p class="venue"><i>Studies in Big Data</i>, Vol. 201. Springer, Cham.</p>
+      <div class="pub-links mono"><a href="https://doi.org/10.1007/978-3-032-31204-4" target="_blank" rel="noopener">DOI</a><button class="cite" type="button">Copy citation</button></div>
+    </li>
+    <li class="pub" data-y="2026" data-k="book">
+      <div class="pub-meta mono"><span class="type">Book chapter</span><span>2026</span></div>
+      <h3>The Human Layer of Agentic AI Memory: What Self-Improving LLM Systems Actually Learn in Production</h3>
+      <p class="au">Parameswaran, A., Hussain, W., &amp; Hossain, M. N.</p>
+      <p class="venue">In M. Sahni, E. León-Castro &amp; W. Hussain (Eds.), <i>AI-Driven Mathematics Education</i> (pp. 35–52). Springer, Cham.</p>
+      <div class="pub-links mono"><a href="https://doi.org/10.1007/978-3-032-31204-4_3" target="_blank" rel="noopener">DOI</a><button class="cite" type="button">Copy citation</button></div>
+    </li>
+    <li class="pub" data-y="2026" data-k="book">
+      <div class="pub-meta mono"><span class="type">Book chapter</span><span>2026</span></div>
+      <h3>Reimagining Student Success: An Agentic Framework for Early Detection and Adaptive Nudging in Higher Education</h3>
+      <p class="au">Hossain, M. N., Hussain, W., &amp; Bekhit, M.</p>
+      <p class="venue">In M. Sahni, E. León-Castro &amp; W. Hussain (Eds.), <i>AI-Driven Mathematics Education</i>. Springer, Cham.</p>
+      <div class="pub-links mono"><a href="https://doi.org/10.1007/978-3-032-31204-4_11" target="_blank" rel="noopener">DOI</a><button class="cite" type="button">Copy citation</button></div>
+    </li>
+    <li class="pub" data-y="2026" data-k="preprint">
+      <div class="pub-meta mono"><span class="type">Preprint</span><span>2026</span></div>
+      <h3>EMFE: A lightweight, explainable machine learning framework for malaria cell classification</h3>
+      <p class="au">Kafi, M. A. A., Hussain, W., Karmakar, M., Banshal, S. K., &amp; Al Marouf, A.</p>
+      <p class="venue"><i>arXiv</i> preprint arXiv:2608.24793.</p>
+      <div class="pub-links mono"><a href="https://arxiv.org/abs/2608.24793" target="_blank" rel="noopener">arXiv</a><button class="cite" type="button">Copy citation</button></div>
+    </li>
+    <li class="pub" data-y="2026" data-k="conference">
+     <div class="pub-meta mono"><span class="type">Conference</span><span>2026</span></div>
+      <h3>AI Intelligence Within Teaching: A Multidimensional Evaluation of Large Language Model Education Agents in K-12 Education</h3>
+      <p class="au">Hussain, W., Varanasi, M. R., &amp; New, L.</p>
+      <p class="venue">2025 International Conference on Computational Engineering, Sensing Technology and Management (ICCETM), Sydney, Australia (pp. 1–6). IEEE.</p>
+      <div class="pub-links mono"><a href="https://doi.org/10.1109/ICCETM66557.2025.11558109" target="_blank" rel="noopener">DOI</a><button class="cite" type="button">Copy citation</button></div>
+    </li>
+    <li class="pub" data-y="2026" data-k="journal">
+  <div class="pub-meta mono"><span class="type">Journal</span><span>2026</span></div>
+  <h3>Harnessing AI-driven large language models (LLMs) for enhanced forecasting and optimisation of wind and solar energy generation and load demand profiles</h3>
+  <p class="au">Aleassa, O., Bekhit, M., Hussain, W., &amp; Fattah, I. M. R.</p>
+  <p class="venue"><i>Renewable and Sustainable Energy Reviews</i>, 239, 117171.</p>
+  <div class="pub-links mono"><a href="https://www.sciencedirect.com/science/article/pii/S1364032126004703" target="_blank" rel="noopener">ScienceDirect</a><button class="cite" type="button">Copy citation</button></div>
+</li>
+<li class="pub" data-y="2026" data-k="book">
+  <div class="pub-meta mono"><span class="type">Book chapter</span><span>2026</span></div>
+  <h3>Deep Learning in Stroke Care</h3>
+  <p class="au">Zafari, Y., Rashed, E. A., Hussain, W., &amp; Mabrok, M.</p>
+  <p class="venue">In <i>Deep Learning Applications in Neuroinformatics</i> (pp. 49–79).</p>
+  <div class="pub-links mono"><a href="https://scholar.google.com/scholar?q=%22Deep%20learning%20in%20stroke%20care%22" target="_blank" rel="noopener">Google Scholar</a><button class="cite" type="button">Copy citation</button></div>
+</li>
+<li class="pub" data-y="2026" data-k="conference">
+  <div class="pub-meta mono"><span class="type">Conference</span><span>2026</span></div>
+  <h3>From Static to Dynamic Personalization: Applying Agentic AI to the Felder–Silverman Learning Style Model (FSLSM)</h3>
+  <p class="au">Hossain, M. N., Rupai, A. A. A., &amp; Hussain, W.</p>
+  <p class="venue">2025 International Conference on Computational Engineering, Sensing Technology and Management (ICCETM). IEEE.</p>
+  <div class="pub-links mono"><a href="https://scholar.google.com/scholar?q=%22From%20Static%20to%20Dynamic%20Personalization%3A%20Applying%20Agentic%20AI%20to%20the%20Felder-Silverman%20Learning%20Style%20Model%22" target="_blank" rel="noopener">Google Scholar</a><button class="cite" type="button">Copy citation</button></div>
+</li>
+<li class="pub" data-y="2026" data-k="conference">
+  <div class="pub-meta mono"><span class="type">Conference</span><span>2026</span></div>
+  <h3>Twin Minds in Cyber-Defense: A Dual-Agent Framework for Safe Automated Assessment in Security Education</h3>
+  <p class="au">Bekhit, M., Rashed, E. A., Othman, W., &amp; Hussain, W.</p>
+  <p class="venue">2026 23rd International Learning and Technology Conference (L&amp;T), 23, 71–75.</p>
+  <div class="pub-links mono"><a href="https://scholar.google.com/scholar?q=%22Twin%20Minds%20in%20Cyber-Defense%3A%20A%20Dual-Agent%20Framework%20for%20Safe%20Automated%20Assessment%20in%20Security%20Education%22" target="_blank" rel="noopener">Google Scholar</a><button class="cite" type="button">Copy citation</button></div>
+</li>
+<li class="pub" data-y="2026" data-k="preprint">
+  <div class="pub-meta mono"><span class="type">Preprint</span><span>2026</span></div>
+  <h3>Credibility-Weighted Evidence Aggregation Using Hybrid LLM–MCDM for Review-Driven Decision Analysis</h3>
+  <p class="au">Rajaeian, M., &amp; Hussain, W.</p>
+  <p class="venue"><i>SSRN</i> preprint 6277363.</p>
+  <div class="pub-links mono"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6277363" target="_blank" rel="noopener">SSRN</a><button class="cite" type="button">Copy citation</button></div>
+</li>
+  </ol>
+  <p class="empty" id="empty" hidden>No publications match those filters.</p>
+  <p class="ph mono rv">More publications will be added to this list over time.</p>
+</section>
+
+<!-- 05 PROJECTS -->
+<section class="sec" id="projects">
+  <div class="head rv">
+    <p class="mono idx">05 — Projects</p>
+    <h2 class="h2">Projects &amp; <em>tools</em></h2>
+  </div>
+  <div class="proj-grid">
+    <article class="proj rv"><span class="mono ptag">Research projects</span><h3>Project title</h3><p>Short description of the project, collaborators and outcomes.</p><dl class="mono"><dt>Links</dt><dd>Awaiting content</dd></dl></article>
+    <article class="proj rv"><span class="mono ptag">Datasets</span><h3>Dataset name</h3><p>Short description, documentation and licensing.</p><dl class="mono"><dt>Links</dt><dd>Awaiting content</dd></dl></article>
+    <article class="proj rv"><span class="mono ptag">Software &amp; frameworks</span><h3>Software name</h3><p>Short description of the software or framework.</p><dl class="mono"><dt>Links</dt><dd>Awaiting content</dd></dl></article>
+    <article class="proj rv"><span class="mono ptag">Prototypes &amp; tools</span><h3>Prototype name</h3><p>Short description of the prototype or tool.</p><dl class="mono"><dt>Links</dt><dd>Awaiting content</dd></dl></article>
+  </div>
+  <p class="ph mono rv">Placeholder — details will be provided and updated later.</p>
+</section>
+
+<!-- 06 NEWS -->
+<section class="sec" id="news">
+  <div class="head rv">
+    <p class="mono idx">06 — News &amp; events</p>
+    <h2 class="h2">Latest from <em>the lab</em></h2>
+  </div>
+  <div class="news-grid">
+    <article class="news feature rv">
+      <div class="news-img">
+        <div class="n-stat"><b>~80</b><span class="mono">ACU students took part</span></div>
+        <div class="n-stat"><b>2</b><span class="mono">TechSkills internship opportunities</span></div>
+      </div>
+      <div class="news-b">
+        <p class="mono n-meta"><span class="ntag">Event</span>May 2026</p>
+        <h3>IT Boot Camp with TechSkills Institute</h3>
+        <p>The AIDX Lab partnered with TechSkills Institute to run a hands-on IT boot camp for nearly 80 ACU students, covering helpdesk ticketing, Entra ID and Office 365, user onboarding, network equipment, device management and interview preparation. Two students received TechSkills internship opportunities.</p>
+        <a class="mono n-link" href="https://www.miragenews.com/it-boot-camp-as-real-as-it-gets-1676136/" target="_blank" rel="noopener">Read the story <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        <a class="mono n-link" href="#media" style="margin-left:18px">Watch the video <i class="fa-solid fa-play" aria-hidden="true"></i></a>
+      </div>
+    </article>
+    <article class="news slot rv"><p class="mono n-meta"><span class="ntag">Seminar</span>Date</p><h3>Seminar title</h3><p>Description, images and links.</p></article>
+    <article class="news slot rv"><p class="mono n-meta"><span class="ntag">Workshop</span>Date</p><h3>Workshop title</h3><p>Description, images and links.</p></article>
+    <article class="news slot rv"><p class="mono n-meta"><span class="ntag">Outreach</span>Date</p><h3>Outreach activity</h3><p>Description, images and links.</p></article>
+  </div>
+  <p class="ph mono rv">Placeholder — further news, events, workshops, seminars and outreach will be added.</p>
+</section>
+
+<!-- 07 MEDIA (video only) -->
+<section class="sec" id="media">
+  <div class="head rv">
+    <p class="mono idx">07 — Media</p>
+    <h2 class="h2">Video <em>updates</em></h2>
+    <p class="intro-p">Demonstrations, project updates and recordings of the lab's work.</p>
+  </div>
+  <div class="media-grid">
+    <figure class="player rv">
+      <div class="frame">
+        <a class="yt" href="https://www.youtube.com/watch?v=jpmu1fN1UTw" target="_blank" rel="noopener"
+           data-yt="jpmu1fN1UTw" data-title="IT Bootcamp by ACU's AIDX Lab and TechSkills Australia"
+           aria-label="Play video: IT Bootcamp by ACU's AIDX Lab and TechSkills Australia">
+          <img src="https://i.ytimg.com/vi/jpmu1fN1UTw/hqdefault.jpg" alt="" loading="lazy">
+          <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.3.3 34 .3 34 .3s-21.3 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.7 47.7 34 47.7 34 47.7s21.3 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E8B04B"/><path d="M45 24 27 14v20z" fill="#0A1224"/></svg></span>
+        </a>
+      </div>
+      <figcaption><span class="mono">Featured · Outreach</span><h3>IT Bootcamp by ACU's AIDX Lab and TechSkills Australia</h3><p><a class="yt-link" href="https://www.youtube.com/watch?v=jpmu1fN1UTw" target="_blank" rel="noopener">Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></p></figcaption>
+    </figure>
+    <ol class="playlist rv" aria-label="More videos">
+      <li><span class="thumb" aria-hidden="true"><i class="fa-solid fa-play"></i></span><div><h4>Lab introduction</h4><p class="mono">Coming soon</p></div></li>
+      <li><span class="thumb" aria-hidden="true"><i class="fa-solid fa-play"></i></span><div><h4>Research demonstration</h4><p class="mono">Coming soon</p></div></li>
+      <li><span class="thumb" aria-hidden="true"><i class="fa-solid fa-play"></i></span><div><h4>Seminar recording</h4><p class="mono">Coming soon</p></div></li>
+    </ol>
+  </div>
+  <p class="ph mono rv">More videos will be added here as they are published.</p>
+</section>
+
+<!-- 08 PARTNERS -->
+<section class="sec" id="partners">
+  <div class="head rv">
+    <p class="mono idx">08 — Partners</p>
+    <h2 class="h2">Partners &amp; <em>funding</em></h2>
+  </div>
+  <div class="logos rv">
+    <div class="logo-slot"><span class="mono">Partner logo</span></div>
+    <div class="logo-slot"><span class="mono">Industry collaborator</span></div>
+    <div class="logo-slot"><span class="mono">Funding body</span></div>
+    <div class="logo-slot"><span class="mono">Supporting institution</span></div>
+  </div>
+  <p class="ph mono rv">Placeholder — logos, descriptions, websites and funding acknowledgements will be added.</p>
+</section>
+
+<!-- 09 CONTACT -->
+<section class="sec" id="contact">
+  <div class="head rv">
+    <p class="mono idx">09 — Contact</p>
+    <h2 class="h2">Work <em>with us</em></h2>
+  </div>
+  <div class="contact rv">
+    <div class="c-l">
+      <p class="intro-p">We welcome enquiries from prospective research students, collaborators, industry partners and funding bodies.</p>
+      <dl class="c-list">
+        <div><dt class="mono">Email</dt><dd class="tbc">To be confirmed</dd></div>
+        <div><dt class="mono">Phone</dt><dd class="tbc">To be confirmed</dd></div>
+        <div><dt class="mono">Address</dt><dd>Peter Faber Business School<br>Australian Catholic University<br>North Sydney NSW, Australia</dd></div>
+      </dl>
+    </div>
+    <form class="c-form" action="https://formspree.io/f/meaqyzob" method="POST">
+      <label><span class="mono">Name</span><input type="text" name="name" autocomplete="name" required></label>
+      <label><span class="mono">Email</span><input type="email" name="email" autocomplete="email" required></label>
+      <label><span class="mono">Enquiry type</span>
+        <select name="type"><option>General enquiry</option><option>Research collaboration</option><option>Industry partnership</option><option>Prospective research student</option></select>
+      </label>
+      <label><span class="mono">Message</span><textarea name="message" rows="5" required></textarea></label>
+      <button type="submit" class="btn btn-gold">Send message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <svg class="mark lg" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8 L92 50 L50 92 L8 50 Z"/><circle cx="50" cy="50" r="9"/></svg>
+      <p>AI for Decision Excellence Lab<br><span>Peter Faber Business School<br>Australian Catholic University</span></p>
+    </div>
+    <nav class="foot-cols mono" aria-label="Footer">
+      <div><span>Lab</span><a href="#about">About</a><a href="#research">Research</a><a href="#people">People</a></div>
+      <div><span>Work</span><a href="#publications">Publications</a><a href="#projects">Projects</a><a href="#media">Media</a></div>
+      <div><span>More</span><a href="#news">News</a><a href="#contact">Contact</a><a href="brand.html">Brand assets</a></div>
+    </nav>
+  </div>
+  <p class="wordmark" aria-hidden="true">AIDX</p>
+  <div class="foot-bot mono"><span>© 2026 AI for Decision Excellence Lab</span><span>Australian Catholic University · North Sydney</span></div>
+</footer>
+
+<button id="toTop" class="to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+<div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet-box">
+    <button class="sheet-x" id="sheetX" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
